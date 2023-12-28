@@ -10,9 +10,13 @@ const Diary = (props: DiaryProps): JSX.Element => {
 
     return (
         <div>
-            <b>{date}</b>
-            <p>visibility: {visibility}</p>
-            <p>weather: {weather}</p>
+            <p>
+                <b>{date}</b>
+                <br/>
+                visibility: {visibility}
+                <br/>
+                weather: {weather}
+            </p>
         </div>
     )
 }
