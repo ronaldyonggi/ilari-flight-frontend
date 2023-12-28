@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { NonSensitiveDiaryEntry } from "./types"
+import { DiaryEntry } from "./types"
 import { getAllDiaries } from "./services/diaryService"
 import Diary from "./components/Diary"
 
 const App = () => {
-  const [diaries, setDiaries] = useState<NonSensitiveDiaryEntry[]>([])
+  const [diaries, setDiaries] = useState<DiaryEntry[]>([])
 
   useEffect(() => {
     getAllDiaries()
