@@ -8,7 +8,7 @@ const App = () => {
   const [diaries, setDiaries] = useState<DiaryEntry[]>([])
 
   useEffect(() => {
-    getAllDiaries()
+    diaryService.getAllDiaries()
       .then(data => setDiaries(data))
   }, [])
 
