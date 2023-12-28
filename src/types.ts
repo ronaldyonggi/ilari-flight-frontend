@@ -22,6 +22,4 @@ export interface DiaryEntry {
     comment: string;
 }
 
-export type NonSensitiveDiaryEntry = Omit<DiaryEntry, 'comment'>;
-
-export type NewDiaryEntry = Omit<NonSensitiveDiaryEntry, 'id'>;
+export type NewDiaryEntry = Omit<DiaryEntry, 'id'>;
