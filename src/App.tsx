@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { DiaryEntry } from "./types"
-import { getAllDiaries } from "./services/diaryService"
+import diaryService from "./services/diaryService"
 import Diary from "./components/Diary"
 
 const App = () => {
