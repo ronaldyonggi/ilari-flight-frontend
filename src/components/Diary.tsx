@@ -1,7 +1,7 @@
-import { NonSensitiveDiaryEntry } from "../types";
+import { DiaryEntry } from "../types";
 
 interface DiaryProps {
-    diaryEntry: NonSensitiveDiaryEntry;
+    diaryEntry: DiaryEntry;
 }
 
 const Diary = (props: DiaryProps): JSX.Element => {
