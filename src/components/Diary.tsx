@@ -6,7 +6,7 @@ interface DiaryProps {
 
 const Diary = (props: DiaryProps): JSX.Element => {
     const { diaryEntry } = props;
-    const { date, weather, visibility } = diaryEntry;
+    const { date, weather, visibility, comment } = diaryEntry;
 
     return (
         <div>
@@ -16,6 +16,8 @@ const Diary = (props: DiaryProps): JSX.Element => {
                 visibility: {visibility}
                 <br/>
                 weather: {weather}
+                <br />
+                comment: {comment}
             </p>
         </div>
     )
