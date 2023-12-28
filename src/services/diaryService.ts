@@ -1,5 +1,5 @@
 import axios from "axios"
-import { NonSensitiveDiaryEntry } from "../types"
+import { DiaryEntry, NewDiaryEntry} from "../types"
 
 const baseUrl = 'http://localhost:3000/api/diaries'
 
@@ -9,7 +9,12 @@ const getAllDiaries = () => {
         .then(res => res.data)
 }
 
+const createDiary = (object: NewDiaryEntry) => {
     return axios
-        .get<NonSensitiveDiaryEntry[]>(baseUrl)
+        .post<DiaryEntry>(baseUrl, object)
         .then(res => res.data)
+}
+
+export default {
+    getAllDiaries, createDiary
 }
