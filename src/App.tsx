@@ -10,8 +10,13 @@ const App = () => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    diaryService.getAllDiaries()
-      .then(data => setDiaries(data))
+
+    const fetchDiariesOnRender = async () => {
+      const allDiaries = await diaryService.getAllDiaries()
+      setDiaries(allDiaries)
+    }
+
+    fetchDiariesOnRender()
   }, [])
 
   return (
