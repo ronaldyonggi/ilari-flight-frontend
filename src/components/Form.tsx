@@ -5,17 +5,18 @@ import { DiaryEntry, Visibility, Weather } from "../types"
 interface FormProps {
   diaries: DiaryEntry[];
   setDiaries: React.Dispatch<React.SetStateAction<DiaryEntry[]>>;
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Form = (props: FormProps) => {
-  const { diaries, setDiaries } = props;
+  const { diaries, setDiaries, setMessage } = props;
 
   const [newDate, setNewDate] = useState('')
   const [newVisibility, setNewVisibility] = useState('')
   const [newWeather, setNewWeather] = useState('')
   const [newComment, setNewComment] = useState('')
 
-  const diaryCreation = (e: React.SyntheticEvent) => {
+  const diaryCreation = async (e: React.SyntheticEvent) => {
     e.preventDefault()
 
     const newDiary = {
@@ -25,14 +26,29 @@ const Form = (props: FormProps) => {
       comment: newComment
     }
 
-    diaryService.createDiary(newDiary)
-      .then(data => setDiaries(diaries.concat(data)))
+    // diaryService.createDiary(newDiary)
+    //   .then(data => setDiaries(diaries.concat(data)))
 
-    setNewDate('')
-    setNewVisibility('')
-    setNewWeather('')
-    setNewComment('')
+    try {
+      const createdDiary = await diaryService.createDiary(newDiary)
+      if (createdDiary) {
+        setDiaries(diaries.concat(createdDiary))
+      }
+    } catch(error: unknown) {
+      if (error instanceof Error) {
+        const errorMessage = '' + error
+        setMessage(errorMessage)
+        setTimeout(() => {
+          setMessage('')
+        }, 6000);
+      }
+    }
 
+
+    // setNewDate('')
+    // setNewVisibility('')
+    // setNewWeather('')
+    // setNewComment('')
   }
 
   return (
