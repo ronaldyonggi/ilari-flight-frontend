@@ -1,6 +1,7 @@
 import { useState } from "react"
 import diaryService from "../services/diaryService"
 import { DiaryEntry, Visibility, Weather } from "../types"
+import VisibilityRadio from "./VisibilityRadio";
 
 interface FormProps {
   diaries: DiaryEntry[];
@@ -12,7 +13,7 @@ const Form = (props: FormProps) => {
   const { diaries, setDiaries, setMessage } = props;
 
   const [newDate, setNewDate] = useState('')
-  const [newVisibility, setNewVisibility] = useState('')
+  const [newVisibility, setNewVisibility] = useState<Visibility>(Visibility.Great)
   const [newWeather, setNewWeather] = useState('')
   const [newComment, setNewComment] = useState('')
 
@@ -54,14 +55,7 @@ const Form = (props: FormProps) => {
         <div>
           date<input name="date" value={newDate} onChange={e => setNewDate(e.target.value)} type="date" />
         </div>
-        <div>
-          visibility 
-          <input name="visibility" value={newVisibility} onChange={e => setNewVisibility(e.target.value)} />
-        </div>
-        <div>
-          weather 
-          <input name="weather" value={newWeather} onChange={e => setNewWeather(e.target.value)} />
-        </div>
+        <VisibilityRadio setNewVisibility={setNewVisibility} />
         <div>
           comment <textarea name="comment" value={newComment} onChange={e => setNewComment(e.target.value)} cols={33} />
         </div>
