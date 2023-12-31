@@ -45,10 +45,8 @@ const Form = (props: FormProps) => {
     }
 
 
-    // setNewDate('')
-    // setNewVisibility('')
-    // setNewWeather('')
-    // setNewComment('')
+    setNewDate('')
+    setNewComment('')
   }
 
   return (
