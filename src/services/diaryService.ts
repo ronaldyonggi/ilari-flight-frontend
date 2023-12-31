@@ -8,10 +8,19 @@ const getAllDiaries = async () => {
     return response.data
 }
 
-const createDiary = (object: NewDiaryEntry) => {
-    return axios
-        .post<DiaryEntry>(baseUrl, object)
-        .then(res => res.data)
+const createDiary = async (object: NewDiaryEntry) => {
+    try {
+        const response = await axios.post<DiaryEntry>(baseUrl, object)
+        return response.data
+    } catch(error) {
+        if (axios.isAxiosError(error)) {
+            // console.log(error.response?.data)
+            throw new Error(error.response?.data)
+        } else {
+            // console.log(`This is another error`)
+            throw new Error(`Unknown error, not an Axios error!`)
+        }
+    }
 }
 
 export default {
